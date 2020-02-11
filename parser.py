@@ -36,8 +36,8 @@ for node in root.findall('shop/offers/offer'):
         retailer_id = retailer.get("id")
         retailer_stock = retailer.get("instock")
         retailer_price = float(retailer.find('price').text)
-        if (pack_type in ['Весовой', 'Фасованный'] or
-                abs(retailer_price - shop_price) >= max(retailer_price, shop_price) * 0.3):
+        if ((pack_type in ['Весовой', 'Фасованный'] or
+                abs(retailer_price - shop_price) >= max(retailer_price, shop_price) * 0.3)) and (retailer_price != 0):
 #здесь очень странный момент, очевидно(как мне кажется), что наценка не может быть 30%
 #однако, есть товары, в которых тип фасовки не указан, однако они продаются на развес,
 #напрмер, Азу или же какая-то разделка, к сожалению, мне не удалось найти схожести в их параметрах
